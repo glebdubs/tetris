@@ -7,13 +7,13 @@ axis equal;
 xlim([0, 10]);
 ylim([0, 24]);
 
-% salmon: #f04e64 - Z
-% orange: #f15632 - L
-% yellow: #f79031 - square
-% green : #1e914d - S
-% blue  : #2571b9 - line
-% purple: #712672 - T
-% navy  : #23336f - backwards L
+% salmon: #f04e64 (f04e64) - Z
+% orange: #f15632 (f15632) - L
+% yellow: #f79031 (f79031) - square
+% green : #1e914d (1e914d) - S
+% blue  : #2571b9 (2571b9) - line
+% purple: #712672 (712672) - T
+% navy  : #23336f (23336f) - backwards L 
 
 
 function rgb = hex2rgb(hex)
@@ -28,8 +28,6 @@ end
 for y = 0:24
     plot([0 10], [y y], 'k');
 end
-
-disp(hex2rgb('#40AD5A'));
 
 cellRow = 5;
 cellCol = 3;
