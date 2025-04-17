@@ -23,3 +23,16 @@ str = ["Mercury","Gemini","Apollo";
        "Skylab","Skylab B","ISS"];
 
 disp(str(3))
+
+% Create a 24x10 matrix (0=no color, 1=color)
+colorMatrix = zeros(24, 10);
+colorMatrix(1, 1) = 2;  % Mark cell (5,3)
+
+figure;
+imagesc(0.5:9.5, 0.5:23.5, colorMatrix);  % Center cells on integer grid
+colourmapArray = [1 1 1; 1 0 0; 0 1 0];
+colormap(colourmapArray);  % [white; red]
+axis equal;
+xlim([0 10]); ylim([0 24]);
+set(gca, 'XTick', 0:10, 'YTick', 0:24, 'XGrid', 'on', 'YGrid', 'on', ...
+         'XTickLabel', []);

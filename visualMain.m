@@ -82,7 +82,7 @@ piecesSize = size(initialPieces);
 cellRow = 5;
 cellCol = 3;
 
-%colourCell(gca, cellCol, cellRow, "#333")
+colourCell(gca, cellCol, cellRow, "#333")
 
 hold off;
 set(gca, 'XTick', 0:10, 'YTick', 0:24, 'XGrid', 'on', 'YGrid', 'on', ...
