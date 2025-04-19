@@ -120,15 +120,14 @@ end
 
 % tetris components - field and pieces
 
-
 pieceColours = [
     " #2571b9"; ... % line
     " #23336f"; ... % backwards L 
     " #f15632"; ... % L
     " #712672"; ... % T
     " #f79031"; ... % square
-    " #f04e64"; ... % Z
-    " #1e914d"     % S
+    " #1e914d"; ... % S
+    " #f04e64"      % Z
 ];
 
 initialPieces = [ % likely not going to need this at all
@@ -137,8 +136,8 @@ initialPieces = [ % likely not going to need this at all
     [0, 0, 1, 0, 1, 1, 1, 0]; %  L
     [1, 1, 1, 0, 0, 1, 0, 0]; %  T
     [0, 1, 1, 0, 0, 1, 1, 0]; %  square
-    [0, 1, 1, 0, 1, 1, 0, 0]; %  Z
-    [0, 1, 1, 0, 0, 0, 1, 1]  %  S
+    [0, 1, 1, 0, 1, 1, 0, 0]; %  S
+    [0, 1, 1, 0, 0, 0, 1, 1]  %  Z
 ];
 
 pieceCoords        = [[1, 1]; [1, 2]; [1, 3]; [1, 4]]; %  line
@@ -146,8 +145,44 @@ pieceCoords(:,:,2) = [[1, 1]; [1, 2]; [1, 3]; [2, 3]]; %  backwards L
 pieceCoords(:,:,3) = [[2, 1]; [2, 2]; [2, 3]; [1, 3]]; %  L
 pieceCoords(:,:,4) = [[1, 1]; [1, 2]; [1, 3]; [2, 2]]; %  T
 pieceCoords(:,:,5) = [[1, 2]; [1, 3]; [2, 2]; [2, 3]]; %  square
-pieceCoords(:,:,6) = [[1, 2]; [1, 3]; [2, 1]; [2, 2]]; %  Z
-pieceCoords(:,:,7) = [[1, 2]; [1, 3]; [2, 3]; [2, 4]]; %  S
+pieceCoords(:,:,6) = [[1, 2]; [1, 3]; [2, 1]; [2, 2]]; %  S
+pieceCoords(:,:,7) = [[1, 2]; [1, 3]; [2, 3]; [2, 4]]; %  Z
+
+
+pieceVariations          = [[2, 1]; [2, 2]; [2, 3]; [2, 4]]; % line
+pieceVariations(:,:,1,2) = [[1, 2]; [2, 2]; [3, 2]; [4, 2]];
+pieceVariations(:,:,1,3) = [[3, 1]; [3, 2]; [3, 3]; [3, 4]];
+pieceVariations(:,:,1,4) = [[1, 3]; [2, 3]; [3, 3]; [4, 3]];
+
+pieceVariations(:,:,2,1) = [[1, 1]; [2, 2]; [3, 2]; [3, 3]]; % backwards L
+pieceVariations(:,:,2,2) = [[2, 1]; [2, 2]; [2, 3]; [3, 1]];
+pieceVariations(:,:,2,3) = [[1, 1]; [2, 2]; [3, 2]; [1, 1]];
+pieceVariations(:,:,2,4) = [[2, 1]; [2, 2]; [2, 3]; [1, 3]];
+
+pieceVariations(:,:,3,1) = [[1, 1]; [2, 2]; [3, 2]; [3, 1]]; % L
+pieceVariations(:,:,3,2) = [[2, 1]; [2, 2]; [2, 3]; [1, 1]];
+pieceVariations(:,:,3,3) = [[1, 1]; [2, 2]; [3, 2]; [1, 3]];
+pieceVariations(:,:,3,4) = [[2, 1]; [2, 2]; [2, 3]; [3, 3]];
+
+pieceVariations(:,:,4,1) = [[1, 2]; [2, 2]; [2, 3]; [3, 2]]; % T
+pieceVariations(:,:,4,2) = [[2, 1]; [2, 2]; [2, 3]; [3, 2]];
+pieceVariations(:,:,4,3) = [[1, 2]; [2, 2]; [3, 2]; [2, 1]];
+pieceVariations(:,:,4,4) = [[1, 2]; [2, 2]; [2, 3]; [2, 1]];
+
+pieceVariations(:,:,5,1) = [[1, 1]; [1, 2]; [2, 1]; [2, 2]]; % square
+pieceVariations(:,:,5,2) = [[1, 1]; [1, 2]; [2, 1]; [2, 2]];
+pieceVariations(:,:,5,3) = [[1, 1]; [1, 2]; [2, 1]; [2, 2]];
+pieceVariations(:,:,5,4) = [[1, 1]; [1, 2]; [2, 1]; [2, 2]];
+
+pieceVariations(:,:,5,1) = [[1, 1]; [3, 2]; [2, 1]; [2, 2]]; % S
+pieceVariations(:,:,5,2) = [[1, 3]; [1, 2]; [2, 1]; [2, 2]];
+pieceVariations(:,:,5,3) = [[1, 2]; [3, 3]; [2, 3]; [2, 2]];
+pieceVariations(:,:,5,4) = [[2, 3]; [3, 1]; [3, 2]; [2, 2]];
+
+pieceVariations(:,:,5,1) = [[1, 2]; [1, 3]; [2, 1]; [2, 2]]; % Z
+pieceVariations(:,:,5,2) = [[1, 1]; [1, 2]; [2, 3]; [2, 2]];
+pieceVariations(:,:,5,3) = [[1, 3]; [3, 2]; [2, 3]; [2, 2]];
+pieceVariations(:,:,5,4) = [[3, 2]; [1, 2]; [3, 3]; [2, 2]];
 
 %piecesSize = size(initialPieces);
 
