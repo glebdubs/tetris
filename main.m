@@ -98,7 +98,7 @@ colormap(colourmapArray)
 
 hold off;
 set(gca, 'XTick', 0:10, 'YTick', 0:24, 'XGrid', 'on', 'YGrid', 'on', ...
-    'XTickLabel', [], 'YTickLabel', [], 'XColor', '#ddd', 'YColor', "#ddd");
+    'XTickLabel', [], 'YTickLabel', [], 'XColor', '#777', 'YColor', "#777");
 
 
 % store data in the figure
@@ -109,6 +109,35 @@ start(game.timer);
 
 
 %% FUNCTIONS
+
+function checkRows()
+    f = gcf;
+    game = guidata(f);
+    fprintf("checkingRows\n");
+    row = 24;
+    while row >= 1
+        rowClear = true;
+        for j = 1:10
+            %fprintf("game.field(%i, %i): %i\n", i, j, game.field(i, j))
+            if game.field(row, j) == 0
+                rowClear = false;
+                break;
+            end
+        end
+        if rowClear
+            fprintf("\n\n\nFULL ROW FOUND\n\n\n");
+            for k = row-1:-1:1
+                game.field(k+1,:) = game.field(k,:);
+            end
+            game.field(1,:) = zeros(1,10);
+        else
+            row = row-1;
+        end
+    end
+    %fprintf("checkRows complete\n")
+    guidata(f, game);
+    redraw(game);
+end
 
 function slam()
     f = gcf;
@@ -124,20 +153,20 @@ function slam()
             yCoord = game.currentPiece(j, 1) + game.currentCoords(1)+counter;
             xCoord = game.currentPiece(j, 2) + game.currentCoords(2);
             if yCoord >= 25
-                fprintf("yCoord <= 1;\n")
+                %fprintf("yCoord <= 1;\n")
                 valueWorks = false;
             elseif game.field(yCoord, xCoord) ~= 0
-                fprintf("hit something\n")
+                %fprintf("hit something\n")
                 valueWorks = false;
             end
         end
-        fprintf("counter: %i\n", counter);
+        %fprintf("counter: %i\n", counter);
 
         if ~valueWorks
-            fprintf("validSpotFound = true;\n")
+            %fprintf("validSpotFound = true;\n")
             validSpotFound = true;
         else
-            fprintf("counter = counter+1;\n")
+            %fprintf("counter = counter+1;\n")
             counter = counter + 1;
         end
 
@@ -153,6 +182,8 @@ function slam()
     redraw(game);
 
 end
+
+
 function tryRotateCCW()
     f = gcf;
     game = guidata(f);
@@ -161,24 +192,28 @@ function tryRotateCCW()
         targetVar = 1;
     end
     canRotate = true;
-    fprintf("\n\n\n\n\n");
+    %fprintf("\n\n\n\n\n");
 
     for i = 1:4
         newXCoord = game.pieceVariations(i,1,game.pieceID,targetVar) + game.currentCoords(1);
         newYCoord = game.pieceVariations(i,2,game.pieceID,targetVar) + game.currentCoords(2);
-        fprintf(" current coordinates: (%i, %i)\n", game.currentPiece(i, 1) + game.currentCoords(1), game.currentPiece(i, 2) + game.currentCoords(2))
-        fprintf(" new coordinates: (%i, %i)\n", newXCoord, newYCoord);
+        %fprintf(" current coordinates: (%i, %i)\n", game.currentPiece(i, 1) + game.currentCoords(1), game.currentPiece(i, 2) + game.currentCoords(2))
+        %fprintf(" new coordinates: (%i, %i)\n", newXCoord, newYCoord);
 
-        if game.field(newXCoord, newYCoord) ~= 0
+        if newYCoord > 0 && newYCoord < 11
+            if game.field(newXCoord, newYCoord) ~= 0
+                canRotate = false;
+            end
+        else
             canRotate = false;
         end
     end
 
-    fprintf("\n\ncanRotate: %s \n", string(canRotate));
+    %fprintf("\n\ncanRotate: %s \n", string(canRotate));
 
     if canRotate
         game.variation = targetVar;
-        fprintf("game.variation: %i \n", game.variation);
+        %fprintf("game.variation: %i \n", game.variation);
         game.currentPiece(:,1) = game.pieceVariations(:, 1, game.pieceID, targetVar);
         game.currentPiece(:,2) = game.pieceVariations(:, 2, game.pieceID, targetVar);
         guidata(f, game);
@@ -265,10 +300,9 @@ function tryMoveDown()
         end
         %disp("making another piece!");
         guidata(f, game);
+        checkRows();
         nextMove();
     end
-    %guidata(f, game);
-    %redraw(game);
 end
 
 function nextMove()
@@ -394,7 +428,7 @@ function redraw(game)
         xlim([0, 10]);
         ylim([0, 24]);
         set(gca, 'XTick', 0:10, 'YTick', 0:24, 'XGrid', 'on', 'YGrid', 'on', ...
-            'XTickLabel', [], 'YTickLabel', [], 'XColor', '#ddd', 'YColor', "#ddd");
+            'XTickLabel', [], 'YTickLabel', [], 'XColor', '#777', 'YColor', "#777");
     else
         % Only update image data
         imgHandle.CData = tempField;
