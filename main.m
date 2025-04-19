@@ -22,42 +22,42 @@ game.pieceCoords(:,:,5) = [[1, 2]; [1, 3]; [2, 2]; [2, 3]]; %  square
 game.pieceCoords(:,:,6) = [[1, 2]; [1, 3]; [2, 1]; [2, 2]]; %  S
 game.pieceCoords(:,:,7) = [[1, 2]; [1, 3]; [2, 3]; [2, 4]]; %  Z
 
-game.currentCoords = [0, 0];
+game.currentCoords = [0, 3];
 
-game.pieceVariations          = [[1, 2]; [2, 2]; [3, 2]; [4, 2]]; % line
+game.pieceVariations          = [[1, 2]; [2, 2]; [3, 2]; [4, 2]]; % line ALLGOOD
 game.pieceVariations(:,:,1,2) = [[2, 1]; [2, 2]; [2, 3]; [2, 4]];
 game.pieceVariations(:,:,1,3) = [[1, 3]; [2, 3]; [3, 3]; [4, 3]];
 game.pieceVariations(:,:,1,4) = [[3, 1]; [3, 2]; [3, 3]; [3, 4]];
 
-game.pieceVariations(:,:,2,1) = [[1, 1]; [2, 2]; [3, 2]; [3, 3]]; % backwards L
+game.pieceVariations(:,:,2,1) = [[1, 2]; [2, 2]; [3, 2]; [3, 3]]; % backwards L allgood
 game.pieceVariations(:,:,2,2) = [[2, 1]; [2, 2]; [2, 3]; [3, 1]];
-game.pieceVariations(:,:,2,3) = [[1, 1]; [2, 2]; [3, 2]; [1, 1]];
+game.pieceVariations(:,:,2,3) = [[1, 1]; [2, 2]; [3, 2]; [1, 2]];
 game.pieceVariations(:,:,2,4) = [[2, 1]; [2, 2]; [2, 3]; [1, 3]];
 
-game.pieceVariations(:,:,3,1) = [[1, 1]; [2, 2]; [3, 2]; [3, 1]]; % L
-game.pieceVariations(:,:,3,2) = [[2, 1]; [2, 2]; [2, 3]; [1, 1]];
-game.pieceVariations(:,:,3,3) = [[1, 1]; [2, 2]; [3, 2]; [1, 3]];
+game.pieceVariations(:,:,3,1) = [[1, 2]; [2, 2]; [3, 2]; [3, 1]]; % L allgood
+game.pieceVariations(:,:,3,2) = [[1, 1]; [2, 1]; [2, 2]; [2, 3]];
+game.pieceVariations(:,:,3,3) = [[1, 2]; [2, 2]; [3, 2]; [1, 3]];
 game.pieceVariations(:,:,3,4) = [[2, 1]; [2, 2]; [2, 3]; [3, 3]];
 
-game.pieceVariations(:,:,4,1) = [[1, 2]; [2, 2]; [2, 3]; [3, 2]]; % T
+game.pieceVariations(:,:,4,1) = [[1, 2]; [2, 2]; [2, 3]; [3, 2]]; % T ALLGOOD
 game.pieceVariations(:,:,4,2) = [[2, 1]; [2, 2]; [2, 3]; [3, 2]];
 game.pieceVariations(:,:,4,3) = [[1, 2]; [2, 2]; [3, 2]; [2, 1]];
 game.pieceVariations(:,:,4,4) = [[1, 2]; [2, 2]; [2, 3]; [2, 1]];
 
-game.pieceVariations(:,:,5,1) = [[1, 1]; [1, 2]; [2, 1]; [2, 2]]; % square
+game.pieceVariations(:,:,5,1) = [[1, 1]; [1, 2]; [2, 1]; [2, 2]]; % square ALLGOOD
 game.pieceVariations(:,:,5,2) = [[1, 1]; [1, 2]; [2, 1]; [2, 2]];
 game.pieceVariations(:,:,5,3) = [[1, 1]; [1, 2]; [2, 1]; [2, 2]];
 game.pieceVariations(:,:,5,4) = [[1, 1]; [1, 2]; [2, 1]; [2, 2]];
 
-game.pieceVariations(:,:,5,1) = [[1, 1]; [3, 2]; [2, 1]; [2, 2]]; % S
-game.pieceVariations(:,:,5,2) = [[1, 3]; [1, 2]; [2, 1]; [2, 2]];
-game.pieceVariations(:,:,5,3) = [[1, 2]; [3, 3]; [2, 3]; [2, 2]];
-game.pieceVariations(:,:,5,4) = [[2, 3]; [3, 1]; [3, 2]; [2, 2]];
+game.pieceVariations(:,:,6,1) = [[1, 2]; [2, 2]; [2, 1]; [3, 1]]; % S allgood
+game.pieceVariations(:,:,6,2) = [[1, 1]; [1, 2]; [2, 2]; [2, 3]];
+game.pieceVariations(:,:,6,3) = [[1, 3]; [2, 2]; [2, 3]; [3, 2]];
+game.pieceVariations(:,:,6,4) = [[2, 1]; [2, 2]; [3, 2]; [3, 3]];
 
-game.pieceVariations(:,:,5,1) = [[1, 2]; [1, 3]; [2, 1]; [2, 2]]; % Z
-game.pieceVariations(:,:,5,2) = [[1, 1]; [1, 2]; [2, 3]; [2, 2]];
-game.pieceVariations(:,:,5,3) = [[1, 3]; [3, 2]; [2, 3]; [2, 2]];
-game.pieceVariations(:,:,5,4) = [[3, 2]; [1, 2]; [3, 3]; [2, 2]];
+game.pieceVariations(:,:,7,1) = [[1, 1]; [2, 1]; [2, 2]; [3, 2]]; % Z 
+game.pieceVariations(:,:,7,2) = [[1, 2]; [1, 3]; [2, 1]; [2, 2]];
+game.pieceVariations(:,:,7,3) = [[1, 2]; [2, 2]; [2, 3]; [3, 3]];
+game.pieceVariations(:,:,7,4) = [[2, 2]; [2, 3]; [3, 1]; [3, 2]];
 
 
 game.currentPiece = [[0, 0]; [0, 0]; [0, 0]; [0, 0]];
@@ -66,10 +66,8 @@ game.pieceID = randi([1, size(game.pieceCoords, 3)], 1, 1);
 game.variation = 1;
 
 for i=1:4
-    yCoord = game.pieceCoords(i, 1, game.pieceID);
-    xCoord = game.pieceCoords(i, 2, game.pieceID)+3;
-    game.currentPiece(i, 1) = yCoord;
-    game.currentPiece(i, 2) = xCoord;
+    game.currentPiece(i, 1) = game.pieceVariations(i, 1, game.pieceID, 1);
+    game.currentPiece(i, 2) = game.pieceVariations(i, 2, game.pieceID, 1);
     %game.field(yCoord, xCoord) = game.pieceID;
 end
 
@@ -103,8 +101,6 @@ set(gca, 'XTick', 0:10, 'YTick', 0:24, 'XGrid', 'on', 'YGrid', 'on', ...
     'XTickLabel', [], 'YTickLabel', [], 'XColor', '#ddd', 'YColor', "#ddd");
 
 
-
-
 % store data in the figure
 guidata(f, game); 
 
@@ -114,6 +110,49 @@ start(game.timer);
 
 %% FUNCTIONS
 
+function slam()
+    f = gcf;
+    game = guidata(f);
+    validSpotFound = false;
+    counter = 1;
+    while ~validSpotFound
+
+
+        valueWorks = true;
+
+        for j = 1:4
+            yCoord = game.currentPiece(j, 1) + game.currentCoords(1)+counter;
+            xCoord = game.currentPiece(j, 2) + game.currentCoords(2);
+            if yCoord >= 25
+                fprintf("yCoord <= 1;\n")
+                valueWorks = false;
+            elseif game.field(yCoord, xCoord) ~= 0
+                fprintf("hit something\n")
+                valueWorks = false;
+            end
+        end
+        fprintf("counter: %i\n", counter);
+
+        if ~valueWorks
+            fprintf("validSpotFound = true;\n")
+            validSpotFound = true;
+        else
+            fprintf("counter = counter+1;\n")
+            counter = counter + 1;
+        end
+
+        if counter >= 25
+            validSpotFound = true;
+            disp("exit");
+        end
+
+    end
+
+    game.currentCoords(1) = game.currentCoords(1) + counter-1;
+    guidata(f, game);
+    redraw(game);
+
+end
 function tryRotateCCW()
     f = gcf;
     game = guidata(f);
@@ -121,12 +160,33 @@ function tryRotateCCW()
     if targetVar == 5
         targetVar = 1;
     end
+    canRotate = true;
+    fprintf("\n\n\n\n\n");
 
+    for i = 1:4
+        newXCoord = game.pieceVariations(i,1,game.pieceID,targetVar) + game.currentCoords(1);
+        newYCoord = game.pieceVariations(i,2,game.pieceID,targetVar) + game.currentCoords(2);
+        fprintf(" current coordinates: (%i, %i)\n", game.currentPiece(i, 1) + game.currentCoords(1), game.currentPiece(i, 2) + game.currentCoords(2))
+        fprintf(" new coordinates: (%i, %i)\n", newXCoord, newYCoord);
 
+        if game.field(newXCoord, newYCoord) ~= 0
+            canRotate = false;
+        end
+    end
 
+    fprintf("\n\ncanRotate: %s \n", string(canRotate));
 
-
+    if canRotate
+        game.variation = targetVar;
+        fprintf("game.variation: %i \n", game.variation);
+        game.currentPiece(:,1) = game.pieceVariations(:, 1, game.pieceID, targetVar);
+        game.currentPiece(:,2) = game.pieceVariations(:, 2, game.pieceID, targetVar);
+        guidata(f, game);
+        redraw(game);
+    end
+    %finish rotation script
 end
+
 
 
 
@@ -136,8 +196,8 @@ function tryMoveRight()
     canMove = true;
 
     for i = 1:4
-        if game.currentPiece(i, 2) ~= 10
-            if game.field(game.currentPiece(i, 1), game.currentPiece(i, 2)+1) ~= 0
+        if game.currentPiece(i, 2)+game.currentCoords(2) ~= 10
+            if game.field(game.currentPiece(i, 1)+game.currentCoords(1), game.currentPiece(i, 2)+game.currentCoords(2)+1) ~= 0
                 canMove = false;
             end
         else
@@ -146,7 +206,8 @@ function tryMoveRight()
     end
 
     if canMove
-        game.currentPiece(:,2) = game.currentPiece(:,2)+1; % move down
+        %game.currentPiece(:,2) = game.currentPiece(:,2)+1; % move right
+        game.currentCoords(2) = game.currentCoords(2)+1;
         guidata(f, game);
         redraw(game);
     end
@@ -158,8 +219,8 @@ function tryMoveLeft()
     canMove = true;
 
     for i = 1:4
-        if game.currentPiece(i, 2) ~= 1
-            if game.field(game.currentPiece(i, 1), game.currentPiece(i, 2)-1) ~= 0
+        if game.currentPiece(i, 2)+game.currentCoords(2) ~= 1
+            if game.field(game.currentPiece(i, 1)+game.currentCoords(1), game.currentPiece(i, 2)+game.currentCoords(2)-1) ~= 0
                 canMove = false;
             end
         else
@@ -168,7 +229,8 @@ function tryMoveLeft()
     end
 
     if canMove
-        game.currentPiece(:,2) = game.currentPiece(:,2)-1; % move down
+        %game.currentPiece(:,2) = game.currentPiece(:,2)-1; % move left
+        game.currentCoords(2) = game.currentCoords(2)-1;
         guidata(f, game);
         redraw(game);
     end
@@ -180,8 +242,8 @@ function tryMoveDown()
     canMove = true;
 
     for i = 1:4
-        if game.currentPiece(i, 1) ~= 24
-            if game.field(game.currentPiece(i, 1)+1, game.currentPiece(i, 2)) ~= 0
+        if game.currentPiece(i, 1)+game.currentCoords(1) ~= 24
+            if game.field(game.currentPiece(i, 1)+game.currentCoords(1)+1, game.currentPiece(i, 2)+game.currentCoords(2)) ~= 0
                 canMove = false;
             end
         else
@@ -190,13 +252,14 @@ function tryMoveDown()
     end
 
     if canMove
-        game.currentPiece(:,1) = game.currentPiece(:,1) + 1; % move down
+        %game.currentPiece(:,1) = game.currentPiece(:,1) + 1; % move down
+        game.currentCoords(1) = game.currentCoords(1)+1;
         guidata(f, game);
         redraw(game);
     else
         for i = 1:4
-            y=game.currentPiece(i, 1);
-            x=game.currentPiece(i, 2);
+            y=game.currentPiece(i, 1) + game.currentCoords(1);
+            x=game.currentPiece(i, 2) + game.currentCoords(2);
             %fprintf("game.field(%d, %d) = %d\n", y, x, game.pieceID);
             game.field(y, x) = game.pieceID;
         end
@@ -215,15 +278,15 @@ function nextMove()
     %disp(game.currentPiece);
 
     game.pieceID = randi([1, size(game.pieceCoords, 3)], 1, 1);
-    canPlayOn = true;
+    %canPlayOn = true;
     for i=1:4
-        yCoord = game.pieceCoords(i, 1, game.pieceID);
-        xCoord = game.pieceCoords(i, 2, game.pieceID)+3;
-        game.currentPiece(i, 1) = yCoord;
-        game.currentPiece(i, 2) = xCoord;
+        game.currentPiece(i, 1) = game.pieceVariations(i, 1, game.pieceID, 1);
+        game.currentPiece(i, 2) = game.pieceVariations(i, 2, game.pieceID, 1);
+        game.currentCoords = [0, 3];
+        game.variation = 1;
         %game.field(yCoord, xCoord) = game.pieceID;
-        if game.field(yCoord, xCoord) ~= 0
-            canPlayOn = false;
+        if game.field(game.currentPiece(i, 1), game.currentPiece(i, 2)) ~= 0
+            %canPlayOn = false;
         end
     end
     guidata(f, game);
@@ -265,6 +328,8 @@ function keyHandler(~, event)
 
         case 'uparrow'
             tryRotateCCW();
+        case 'space'
+            slam()
     end
 end
 
@@ -303,8 +368,8 @@ function redraw(game)
     tempField = game.field;
 
     for i = 1:4
-        y = game.currentPiece(i, 1);
-        x = game.currentPiece(i, 2);
+        y = game.currentPiece(i, 1)+game.currentCoords(1);
+        x = game.currentPiece(i, 2)+game.currentCoords(2);
         if y>=1 && y <= size(tempField, 1) && x >= 1 && x <= size(tempField, 2)
             tempField(y, x) = game.pieceID;
         end
