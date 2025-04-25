@@ -14,15 +14,16 @@ game.timer = timer('ExecutionMode', 'fixedSpacing', ...
                    'Period', 0.5, ...
                    'TimerFcn', @(~,~) autoDrop());
 
-game.pieceCoords        = [[1, 1]; [1, 2]; [1, 3]; [1, 4]]; %  line
-game.pieceCoords(:,:,2) = [[1, 1]; [1, 2]; [1, 3]; [2, 3]]; %  backwards L
-game.pieceCoords(:,:,3) = [[2, 1]; [2, 2]; [2, 3]; [1, 3]]; %  L
-game.pieceCoords(:,:,4) = [[1, 1]; [1, 2]; [1, 3]; [2, 2]]; %  T
-game.pieceCoords(:,:,5) = [[1, 2]; [1, 3]; [2, 2]; [2, 3]]; %  square
-game.pieceCoords(:,:,6) = [[1, 2]; [1, 3]; [2, 1]; [2, 2]]; %  S
-game.pieceCoords(:,:,7) = [[1, 2]; [1, 3]; [2, 3]; [2, 4]]; %  Z
+%game.pieceCoords        = [[1, 1]; [1, 2]; [1, 3]; [1, 4]]; %  line
+%game.pieceCoords(:,:,2) = [[1, 1]; [1, 2]; [1, 3]; [2, 3]]; %  backwards L
+%game.pieceCoords(:,:,3) = [[2, 1]; [2, 2]; [2, 3]; [1, 3]]; %  L
+%game.pieceCoords(:,:,4) = [[1, 1]; [1, 2]; [1, 3]; [2, 2]]; %  T
+%game.pieceCoords(:,:,5) = [[1, 2]; [1, 3]; [2, 2]; [2, 3]]; %  square
+%game.pieceCoords(:,:,6) = [[1, 2]; [1, 3]; [2, 1]; [2, 2]]; %  S
+%game.pieceCoords(:,:,7) = [[1, 2]; [1, 3]; [2, 3]; [2, 4]]; %  Z
 
 game.currentCoords = [0, 3];
+game.pieceCounter = 0;
 
 game.pieceVariations          = [[1, 2]; [2, 2]; [3, 2]; [4, 2]]; % line ALLGOOD
 game.pieceVariations(:,:,1,2) = [[2, 1]; [2, 2]; [2, 3]; [2, 4]];
@@ -61,13 +62,24 @@ game.pieceVariations(:,:,7,4) = [[2, 2]; [2, 3]; [3, 1]; [3, 2]];
 
 
 game.currentPiece = [[0, 0]; [0, 0]; [0, 0]; [0, 0]];
-
-game.pieceID = randi([1, size(game.pieceCoords, 3)], 1, 1);
+game.pieceID = randi([1, 7], 1, 1);
 game.variation = 1;
+
+game.swappedPiece = [[0, 0]; [0, 0]; [0, 0]; [0, 0]];
+game.swappedPieceID = randi([1, 7], 1, 1);
+game.swappedVariation = 1;
+
+game.placeholderPiece = [[0, 0]; [0, 0]; [0, 0]; [0, 0]];
+game.placeholderPieceID = randi([1, 7], 1, 1);
+game.placeholderVariation = 1;
+
+game.swappedOnThisTurn = false;
 
 for i=1:4
     game.currentPiece(i, 1) = game.pieceVariations(i, 1, game.pieceID, 1);
     game.currentPiece(i, 2) = game.pieceVariations(i, 2, game.pieceID, 1);
+    game.swappedPiece(i, 1) = game.pieceVariations(i, 1, game.swappedPieceID, 1);
+    game.swappedPiece(i, 2) = game.pieceVariations(i, 2, game.swappedPieceID, 1);
     %game.field(yCoord, xCoord) = game.pieceID;
 end
 
@@ -125,7 +137,7 @@ function checkRows()
             end
         end
         if rowClear
-            fprintf("\n\n\nFULL ROW FOUND\n\n\n");
+            %fprintf("\n\n\nFULL ROW FOUND\n\n\n");
             for k = row-1:-1:1
                 game.field(k+1,:) = game.field(k,:);
             end
@@ -180,6 +192,7 @@ function slam()
     game.currentCoords(1) = game.currentCoords(1) + counter-1;
     guidata(f, game);
     redraw(game);
+    tryMoveDown();
 
 end
 
@@ -299,6 +312,7 @@ function tryMoveDown()
             game.field(y, x) = game.pieceID;
         end
         %disp("making another piece!");
+        game.swappedOnThisTurn = false;
         guidata(f, game);
         checkRows();
         nextMove();
@@ -311,23 +325,54 @@ function nextMove()
     %disp('Current Piece before:');
     %disp(game.currentPiece);
 
-    game.pieceID = randi([1, size(game.pieceCoords, 3)], 1, 1);
-    %canPlayOn = true;
+    game.pieceID = randi([1, 7], 1, 1);
+    game.currentCoords = [0, 3];
+    canPlayOn = true;
     for i=1:4
         game.currentPiece(i, 1) = game.pieceVariations(i, 1, game.pieceID, 1);
         game.currentPiece(i, 2) = game.pieceVariations(i, 2, game.pieceID, 1);
-        game.currentCoords = [0, 3];
         game.variation = 1;
+        game.pieceCounter = game.pieceCounter + 1;
         %game.field(yCoord, xCoord) = game.pieceID;
-        if game.field(game.currentPiece(i, 1), game.currentPiece(i, 2)) ~= 0
-            %canPlayOn = false;
+        if game.field(game.currentPiece(i, 1), game.currentPiece(i, 2)+3) ~= 0
+            canPlayOn = false;
         end
+    end
+    if ~canPlayOn
+        %msgbox("GG, you lasted %i turns!", game.pieceCounter);
+        game.pieceCounter = 0;
+        game.field = zeros(24, 10);
     end
     guidata(f, game);
     redraw(game);
     %disp('Current Piece after:');
     %disp(game.currentPiece);
 end
+
+function swapHolding()
+    f = gcf;
+    game = guidata(f);
+    if ~game.swappedOnThisTurn
+        game.swappedOnThisTurn = true;
+        game.currentCoords = [0, 3];
+        
+        game.placeholderPiece = game.swappedPiece;
+        game.placeholderPieceID = game.swappedPieceID;
+        game.placeholderVariation = game.swappedVariation;
+
+        game.swappedPiece = game.currentPiece;
+        game.swappedPieceID = game.pieceID;
+        game.swappedVariation = game.variation;
+
+        game.currentPiece = game.placeholderPiece;
+        game.pieceID = game.placeholderPieceID;
+        game.variation = game.placeholderVariation;
+
+        guidata(f, game);
+        redraw(game);
+    end
+end
+
 
 % Drop function (auto or manual)
 function autoDrop()
@@ -338,6 +383,15 @@ function autoDrop()
     %redraw(game);
     %guidata(f, game);
     tryMoveDown();
+end
+
+function resetGame()
+    f=gcf;
+    game = guidata(f);
+    game.pieceCounter = 0;
+    game.field = zeros(24, 10);
+    guidata(f, game);
+    redraw(game);
 end
 
 function keyHandler(~, event)
@@ -364,6 +418,11 @@ function keyHandler(~, event)
             tryRotateCCW();
         case 'space'
             slam()
+        case 'r'
+            resetGame()
+        case 'c'
+            swapHolding()
+            
     end
 end
 
