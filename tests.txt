@@ -1,0 +1,210 @@
+# Test Cases
+
+> Note: main008.m is the final. All others are past incremental versions and testing.
+> The self-evaluation against the rubric is found at the bottom of this file.
+
+## Version 1: main001.m
+
+This stage of development featured only an empty field two dimensional array, with
+one stage of each block that could be placed at the top of the grid. Successful
+operation would appear in the terminal as having a grid of zeroes, 24 rows tall 
+and 10 columns wide, with some tetris piece appearing at the top in 1's.
+
+Example results:
+
+     0     0     0     0     1     1     0     0     0     0
+     0     0     0     1     1     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+
+
+     0     0     0     1     1     1     0     0     0     0
+     0     0     0     0     0     1     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+
+     0     0     0     1     1     1     1     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+
+
+## Version 2: main002.m
+
+This was the first version to implement a GUI. Execution of this version should show
+a fullscreen Matlab window, with a light grey background. It should feature a 24x10 
+white grid with black boundaries between cells, with one cell coloured green.
+A different colouring system was used in the end for the final version of the game, 
+but this was useful for the time being.
+
+An example of successful execution is seen in `main002Example.png`
+
+## Version 3: main003.m
+
+This version implemented both the array from Version 1, as well as the GUI from
+Version 2. Successful operation of this version is seen as the 24x10 grid from V2
+with a single tetris piece appearing at the top of the grid, coloured in it's 
+appropriate colour accordingly to current modern tetris colour codes.
+
+Examples of successful execution are seen in `main003Example1.png`, `main003Example2.png`,
+and `main003Example3.png`
+
+It should be noted that, while loading, every individual tile of the current tetris piece
+may be seen to load individually. This was of top priority to be fixed in future versions.
+
+## Version 4: main004.m
+
+This is the first version to feature moving pieces. A problem appears, in the sense that
+the piece may be seen to move from the bottom to the top of the screen. However, a random
+piece is still able to move consistently, on it's own, at an interval set by a custom 
+timer. 
+
+An example of successful execution may be seen in `main004Example1.mov`
+
+## Version 5: main005.m
+
+This version implements manual movement via the arrow keys; it uses the down, left and
+right arrow keys to move the current piece in the appropriate direction. Additionally,
+When the current piece being used collides with either the bottom layer of the grid,
+or another piece, it is fixed into place, and another new random piece is made at the
+top of the screen, to which the player's control is transferred. Moreover, the previous
+version's problem of having the piece travel from the bottom of the screen to the top
+has been fixed.
+
+Despite this, the pieces are no longer able to move on their own, and this version
+experiences serious performance issues, with an extremely low framerate and poor
+keypress responsiveness.
+
+Successful execution may be seen in `main005Example1.mov`
+
+## Version 6: main006.m
+
+This version is the first to implement rotation of pieces. Moreover, performance issues
+and timer movement issues from previous versions have been resolved. This begins to 
+play largely similar to a real game of tetris, with the notable exception of full rows
+not clearing.
+
+Successful execution may be seen in `main006Example1.mov`
+
+## Version 7: main007.m
+
+This version finally implements row clearing, and operates as a fully playable version
+of tetris. Upon reaching the top of the screen, there is no gameover interaction, and
+pieces instead overlap each other forever, but this operates as an end to the game.
+
+Successful execution may be seen in `main007Example1.mov`
+
+## Version 8: main008.m
+
+This version includes some minor "comfort changes," such as including a function to
+reset the field when pressing [r], a function to swap the current piece into holding
+by pressing [c], and a removal of the delay that came when slamming a piece with 
+the space bar. The one remaining bug is the bars on either side of the grid, which
+have no identifiable cause and may be a bug in Matlab's rendering when using the 
+current persistent image and shape processing system.
+
+Successful execution may be seen in `main008Example1.mov`
+
+
+
+
+# Self-Evaluation against Rubric
+
+1. **Conceptual Coverage**
+
+As functionally all knowledge that has been taught in class so far that is applicable
+to tetris has been used in the development of this project, I believe I performed 
+well in this category. 35 to 40 points. (I'm not sure if partial marks like 35 are
+possible, or if it has to be restrained to bands.)
+
+2. **Value-Add**
+
+The final for this project was just short of 500 lines of code, and overall, demonstrates 
+a good number of features that were not explicitly taught throughout the course, such 
+as creating a custom window and UI, demonstrating manipulation of a grid and its appearance,
+customised and efficient scripts for a visual coloured display of the blocks in the game, 
+and live keyboard inputs for interactive gameplay. 17 pts.
+
+3. **Incremental Development**
+
+I have shown a series of MATLAB files that highlight the development of this project, 
+although generally in very broad strokes and generally only highlighting the big 
+waymarkers during completion. Although all features in this implementation of tetris
+were generally complex and difficult to implement, this does show incremental steps
+of improvement from the perspective of the player. On the development side, generally 
+large changes appear with every stage. ~10 to 11.75 pts
+
+4. **Testing Strategy**
+
+All steps of development were thoroughly tested during their creation, and a large 
+portion of that testing is still evident in the screen recordings and screenshots
+that have been submitted. However, this testing is not always specific and isolatory 
+of the last traits that have been implemented, and as such, may be improved, although
+for a program such as tetris, this would take significant time and differing
+implementation. 7.5 pts
+
+5. **Comments and Style**
+
+All MATLAB conventions have been followed to the tee, as far as I am aware, and
+completely consistently throughout the entirety of the program. However, I am
+missing comments throughout the majority of the program in most versions. 5 pts.
